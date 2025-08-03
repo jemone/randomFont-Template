@@ -33,6 +33,3 @@ function draw() {
     noLoop();
 }
 
-function mouseMoved(){
-    loop();
-}
