@@ -1,38 +1,25 @@
-var font;
-function preload() {
-  font = loadFont('assets/Calistoga-Regular.ttf');
-}
 
-var points;
+
+
+var time =1000;
 
 function setup() {
   createCanvas(900, 400);
-  fill(255, 104, 204, 150);
-  noStroke();
-
-  points = font.textToPoints('c o d e', 50, 300, 300, {
-    sampleFactor: .1,
-    simplifyThreshold: 0
-  });
-
+  rectMode(CENTER);
 
 }
 
 function draw() {
+
   background(0);
 
-  let m = mouseX;
-  var r = map(m, 0, width, 0, 100);
+  var nX = nose(time)
+  var locX = map(nX, 0, 1, 0, width);
 
-  for (let p of points){
-    let x = random(p.x-r, p.x+r);
-    let y = random(p.y-r, p.y+r);
+  thanslate(locX, heigh/2);
 
-    ellipse(x, y, 7, 7);
-  }
-    noLoop();
-}
+  rectangle (0,0, 100,100);
 
-function mouseMoved(){
-    loop();
+  time = time + 0.01;
+  
 }
