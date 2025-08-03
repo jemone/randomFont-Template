@@ -1,38 +1,39 @@
-var font;
-function preload() {
-  font = loadFont('assets/Calistoga-Regular.ttf');
-}
 
-var points;
+var t =100;
 
 function setup() {
-  createCanvas(900, 400);
-  fill(255, 104, 204, 150);
-  noStroke();
-
-  points = font.textToPoints('c o d e', 50, 300, 300, {
-    sampleFactor: .1,
-    simplifyThreshold: 0
-  });
-
+  createCanvas(300, 300);
+  background(255);
+  rectMode(CENTER);
+  noiseSeed(0)
 
 }
 
 function draw() {
-  background(0);
+  background(200);
 
-  let m = mouseX;
-  var r = map(m, 0, width, 0, 100);
+  noiseDetail(4);
+  noFill();
+  beginShape();
+  for (var x=0; x<width; x++){
+    var y = noise(x/100) * height;
+    vertex(x, y);
+    }
+  endShape(OPEN);
 
-  for (let p of points){
-    let x = random(p.x-r, p.x+r);
-    let y = random(p.y-r, p.y+r);
+  noLoop();
+}
 
-    ellipse(x, y, 7, 7);
+function randomGrid(){
+  for (var x=0; x<width; x++){
+    for(var y=0; y<height; y++){
+      var n = noise(x/10,y/10);
+      var c = map(n, 0, 1, 0, 255);
+      stroke(c);
+      point(x,y);
+    }
   }
-    noLoop();
 }
 
-function mouseMoved(){
-    loop();
-}
+
+
