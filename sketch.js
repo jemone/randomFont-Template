@@ -17,7 +17,7 @@ function draw() {
   beginShape();
   for (var x=0; x<width; x++){
     var y = noise(x/100) * height;
-    vertex(x, y);
+    ellipse(x, y, 2,2);
     }
   endShape(OPEN);
 
