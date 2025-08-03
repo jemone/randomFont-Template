@@ -2,7 +2,7 @@
 var t =100;
 
 function setup() {
-  createCanvas(300, 300);
+  createCanvas(700, 300);
   background(255);
   rectMode(CENTER);
   noiseSeed(0)
@@ -12,7 +12,7 @@ function setup() {
 function draw() {
   background(200);
 
-  noiseDetail(4);
+  noiseDetail(1);
   noFill();
   beginShape();
   for (var x=0; x<width; x++){
